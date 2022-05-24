@@ -2,69 +2,37 @@
 
 - PostgreSQL : The world's most advanced open source relational database.
 
-- create database
+- Create a database :
 
 ```
-CREATE DATABASE mydb;
-
+CREATE DATABASE my_database;
 ```
 
-- View all the databases
+- drop a database :
 
 ```
-\l
-
+DROP DATABASE my_database;
 ```
 
-- connect to database
-
-```
-mysql -U postgres
-
-```
-
-- shift to created database
-
-```
-\c mydb
-
-```
-
-- create table
-
-```
-CREATE TABLE mytable (
-  id bigserial PRIMARY KEY,
-  name varchar(50) NOT NULL,
-  age integer NOT NULL,
-  email varchar(50) NOT NULL UNIQUE,
-  phone varchar(50) NOT NULL
-
-);
-
-```
-
-- to view table
+- create a table :
 
   ```
-  \d mytable
+   CREATE TABLE < table_name > ( < column_name > < data_type >, < column_name > < data_type >, < column_name > < data_type > )
 
+   CREATE TABLE person (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+    );
   ```
 
-  - To drop table
+- Add values to a table :
 
-  ```
-    DROP TABLE mytable;
-  ```
+```
+INSERT INTO < table_name > ( < column_name >, < column_name >, < column_name > )
 
-- Insert data into table
-
-  ```
-  INSERT INTO mytable (name, age, email, phone) VALUES ('John', 20, )
-  ```
-
-  - view all the data in the table
-
-    ```
-    SELECT * FROM mytable;
-    ```
+INSERT INTO person (first_name, last_name, email, password)
+VALUES ('John', 'Doe', 'xyz@gmail.com', 'password');
+```
