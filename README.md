@@ -132,6 +132,132 @@ SELECT country_of_birth ,COUNT(*) FROM public.person GROUP BY country_of_birth O
 SELECT country_of_birth ,COUNT(*) FROM public.person GROUP BY country_of_birth HAVING COUNT(*) > 55 ORDER BY country_of_birth;
 
 
+```
+
+#### ....................
+
+```
+
+-- car table
+
+SELECT * FROM public.car;
+
+-- MIN , MAX & AVG
+
+-- SELECT maximum price in car table
+SELECT MAX(price) FROM public.car;
+
+-- SELECT average price in car table
+SELECT AVG(price) FROM public.car;
+
+-- select min price and group by make
+SELECT make, MIN(price) FROM public.car GROUP BY make;
+
+-- select max price and group by make
+SELECT make, MAX(price) FROM public.car GROUP BY make;
+
+---- select avg price and group by make
+SELECT make, AVG(price) FROM public.car GROUP BY make;
+
+-- SUM
+
+-- get sum of price
+SELECT SUM(price) FROM public.car;
+
+-- get all the sum and group by make
+SELECT make, SUM(price) FROM public.car GROUP BY make;
+
+-- Basic Arithematic Operations
+
+SELECT 10 + 2;
+SELECT 10 - 2;
+SELECT 10 * 2;
+SELECT 10 / 2;
+SELECT 10^2;
+SELECT 10 % 4;
+
+-- select id, make, model, price and add 10% offer price column to car table
+SELECT id, make, model, price, price * 0.10 as round FROM public.car;
+
+-- alternate for above
+SELECT id, make, model, price, ROUND(price * 0.10, 2) FROM public.car;
+
+-- -- select id, make, model, price and add 10% offer price column to car table and add fianl price
+SELECT id, make, model, price, ROUND(price * 0.10, 2), ROUND(price - (price * 0.10), 2) FROM public.car;
+
+
+-- ALIAS
+
+-- adding column name for above using AS
+SELECT id, make, model, price AS original_price, ROUND(price * 0.10, 2) AS ten_percent, ROUND(price - (price * 0.10), 2) AS discounted_price FROM public.car;
+
+
+-- COALESCE
+
+SELECT * FROM public.person;
+-- If email is null then add 'Email not provided'
+SELECT COALESCE(email, 'Email not provided') FROM public.person;
+
+
+-- NULL IF
+
+-- TIMESTAMS & DATE
+
+SELECT NOW();
+SELECT NOW()::DATE;
+SELECT NOW()::TIME;
+SELECT NOW() - INTERVAL '10 YEARS';
+SELECT NOW() - INTERVAL '10 MONTHS';
+SELECT NOW() - INTERVAL '100 DAYS';
+
+SELECT EXTRACT(YEAR FROM NOW());
+SELECT EXTRACT(MONTH FROM NOW());
+SELECT EXTRACT(DAY FROM NOW());
+
+-- AGE FUNCTIONS
+
+SELECT * FROM public.person;
+SELECT first_name, last_name, gender, date_of_birth, country_of_birth, AGE(NOW(),date_of_birth ) AS age FROM public.person;
+
+
+-- PRIMARY KEYS (PK)
+-- uniquely identify a record in tables
+
+
+-- UNIQUE CONTRAINTS
+-- unique value per column
+SELECT * FROM public.person;
+
+-- email as unique constraint
+-- ALTER TABLE public.person ADD CONSTRAINT unique_email_address UNIQUE(email);
+-- alternate for above
+-- ALTER TABLE public.person UNIQUE(email);
+
+
+-- CHECK CONSTRAINTS
+SELECT DISTINCT gender FROM public.person;
+
+-- ALTER TABLE public.person ADD CONSTRAINT gender_constraint CHECK(gender = 'Female' OR 'Male');
+
+
+-- DELETE RECORDS
+
+SELECT * FROM public.person WHERE gender = 'Genderqueer';
+DELETE FROM public.person WHERE id = '27';
+SELECT * FROM public.person WHERE gender = 'Genderqueer';
+DELETE FROM public.person WHERE gender = 'Genderqueer';
+SELECT * FROM public.person WHERE gender = 'Genderqueer';
+
+
+-- UPDATE RECORDS
+
+SELECT * FROM public.person;
+UPDATE public.person SET email = 'newwupdate@gmail.com' WHERE id = '2';
+SELECT * FROM public.person;
+SELECT * FROM public.person WHERE email = 'newwupdate@gmail.com';
+
+UPDATE public.person SET first_name ='sathya', last_name ='prakash' WHERE id = '2';
+
 
 
 ```
