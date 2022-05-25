@@ -261,3 +261,27 @@ UPDATE public.person SET first_name ='sathya', last_name ='prakash' WHERE id = '
 
 
 ```
+
+### .................
+
+```
+SELECT * FROM public.person2;
+SELECT * FROM public.car2;
+
+UPDATE person2 SET car_id = 1 WHERE id = 1;
+SELECT * FROM public.person2;
+UPDATE person2 SET car_id = 2 WHERE  id = 2;
+SELECT * FROM public.person2;
+UPDATE person2 SET car_id = 3 WHERE  id = 3;
+SELECT * FROM public.person2;
+
+-- INNER JOINS
+--car2+ person2
+
+SELECT * FROM person2 JOIN car2 ON person2.car_id = car2.id;
+
+-- LEFT JOINS
+
+SELECT * FROM person2 LEFT JOIN car2 ON person2.car_id = car2.id;
+
+```
