@@ -36,3 +36,12 @@ INSERT INTO < table_name > ( < column_name >, < column_name >, < column_name > )
 INSERT INTO person (first_name, last_name, email, password)
 VALUES ('John', 'Doe', 'xyz@gmail.com', 'password');
 ```
+
+- To drop a table :
+
+```
+DROP TABLE < table_name >;
+
+DROP TABLE person;
+
+```
